@@ -6,12 +6,12 @@
   "content_scripts": [
     {
       "matches": ["https://x.com/*"],
-      "js": ["js/loader.js"]
+      "js": ["loader.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["js/main.js"],
+      "resources": ["main.js"],
       "matches": ["https://x.com/*"]
     }
   ]
