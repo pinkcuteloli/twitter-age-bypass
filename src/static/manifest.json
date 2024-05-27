@@ -2,7 +2,11 @@
   "manifest_version": 3,
   "name": "Twitter Age Restriction Bypass",
   "version": "1.0",
-  "host_permissions": ["https://x.com/*"],
+  "permissions": ["webRequest"],
+  "host_permissions": ["https://x.com/*", "https://api.fxtwitter.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["https://x.com/*"],

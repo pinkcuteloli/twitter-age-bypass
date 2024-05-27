@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: "./src/main.ts",
     loader: "./src/loader.ts",
+    background: "./src/background.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

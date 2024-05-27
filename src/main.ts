@@ -1,23 +1,27 @@
 import { Timeline, type Tweet } from "./timeline";
 
-const getReactProps = (element: HTMLElement): object | null => {
-    const properties = Object.getOwnPropertyNames(element) as (keyof typeof element)[];
-    const reactPropsNames: (keyof HTMLElement)[] = properties.filter((name) => name.startsWith("__reactProps$"));
-    if (!reactPropsNames.length) return null;
-
-    return element[reactPropsNames[0]] as object;
+const getReactProps = (element: HTMLElement): any | null => {
+    const reactPropsName = Object.getOwnPropertyNames(element).filter((name) =>
+        name.startsWith("__reactProps$")
+    ) as (keyof typeof element)[];
+    return reactPropsName.length ? (element[reactPropsName[0]] as unknown as any) : null;
 };
 
-const onNewTweet = async (tweet: Tweet): Promise<void> => {
 
+const onNewTweet = async (tweet: Tweet) => {
     const reactProps = getReactProps(tweet);
 
-    console.log(reactProps)
+    if (!reactProps) return;
 
-}
+    if (reactProps.children.props.entry.type === "tombstone") {
+        console.log("pong");
 
+        const entryId = reactProps.children.props.entry.entryId.replace("tweet-", "");
+
+        console.log("entryId", entryId);
+    }
+};
 const timeline = new Timeline();
-
 timeline.onNewTweet((tweet) => {
     void onNewTweet(tweet);
 });
