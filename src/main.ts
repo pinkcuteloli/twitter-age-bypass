@@ -1,4 +1,4 @@
-import { Timeline, type Tweet } from "twi-ext";
+import { Timeline, type Tweet } from "./timeline";
 
 const getReactProps = (element: HTMLElement): object | null => {
     const properties = Object.getOwnPropertyNames(element) as (keyof typeof element)[];
@@ -10,7 +10,10 @@ const getReactProps = (element: HTMLElement): object | null => {
 
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
 
-    console.log(tweet.element)
+    const reactProps = getReactProps(tweet);
+
+    console.log(reactProps)
+
 }
 
 const timeline = new Timeline();

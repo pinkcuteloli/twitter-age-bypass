@@ -14,9 +14,11 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "@types/uuid": "^9.0.8"
   },
   "dependencies": {
-    "twi-ext": "^0.8.4"
+    "async-query": "^1.0.2",
+    "uuid": "^9.0.1"
   }
 }
