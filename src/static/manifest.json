@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Exporter",
+  "version": "1.0",
+  "host_permissions": ["https://x.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*"],
+      "js": ["js/loader.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["js/main.js"],
+      "matches": ["https://x.com/*"]
+    }
+  ]
+}
