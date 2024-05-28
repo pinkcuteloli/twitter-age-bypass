@@ -1,8 +1,9 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log("Message received in background script:", message);
     if (message.action === "fetchTweet") {
-        console.log("pong");
-        sendResponse({ status: "ok" });
+        fetch(`https://api.fxtwitter.com/status/${message.entryId}`)
+            .then(response => response.json())
+            .then(data => sendResponse({ success: true, data }))
+            .catch(error => sendResponse({ success: false, error: error.message }));
+        return true;
     }
-    return true;
 });

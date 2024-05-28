@@ -16,9 +16,10 @@ const onNewTweet = async (tweet: Tweet) => {
     if (reactProps.children.props.entry.type === "tombstone") {
         console.log("pong");
 
-        const entryId = reactProps.children.props.entry.entryId.replace("tweet-", "");
+        const entryId = reactProps.children.props.entry.entryId.replace("tweet-", "") as string
 
-        console.log("entryId", entryId);
+        const event = new CustomEvent("newTweet", { detail: { entryId } });
+        window.dispatchEvent(event);
     }
 };
 const timeline = new Timeline();
